@@ -1,0 +1,51 @@
+{
+	"email": "vjtkudlacek@gmail.com",
+	"phone": "+420 735 854 688",
+	"source": "https://github.com",
+	"socials": [
+		{
+			"label": "Instagram",
+			"link": "https://www.instagram.com/kudlacekvojtech/"
+		},
+		{
+			"label": "LinkedIn",
+			"link": "https://www.linkedin.com/in/vojt%C4%9Bch-kudl%C3%A1%C4%8Dek-39a826145/"
+		},
+		{
+			"label": "YouTube",
+			"link": ""
+		}
+	],
+	"projects": [
+		{
+			"name": "Madesense Digital",
+			"description": "Landing page for a digital agency called Madesense Digital. Even though there is a lot of things I would do differently today, it is one of the projects I'm really proud of and I'm looking forward to do more of these in the future.",
+			"link": "https://madesense.digital/",
+			"image": "madesense.png"
+		},
+		{
+			"name": "Holmes Place",
+			"description": "Holmes Place is an international company that owns network of gyms all around the Europe. Our work was to manage their website, backoffices, reservation system, blog and more! It was a good experience and I learned a lot of things on this project",
+			"link": "https://www.holmesplace.com/",
+			"image": "holmesplace.png"
+		},
+		{
+			"name": "Legal Recruiters",
+			"description": "Landing page of czech recruiter. My first JavaScript-only project.",
+			"link": "https://www.legalrecruiters.cz/",
+			"image": "legalrecruiters.png"
+		},
+		{
+			"name": "WoMo Industrial Monitoring",
+			"description": "Complex embedded industry monitoring system. Challenging project to connect industrial machines with custom server that processes data and serve them to the web application, so client can see what is happening in his factory.",
+			"link": "",
+			"image": "womo.png"
+		},
+		{
+			"name": "Pivo Grando",
+			"description": "One of eshops I worked on as PHP Developer. Even though I don't work with PHP anymore, I really liked to work on this project.",
+			"link": "https://pivogrando.cz/",
+			"image": "pivogrando.png"
+		}
+	]
+}
