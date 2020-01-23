@@ -7,13 +7,11 @@ import Footer from 'components/Footer';
 const Layout: FunctionComponent<ChildrenProperties> = ({ children }) => {
 	return (
 		<>
-			<main>
-				<Header />
-				<section>
-					{children}
-				</section>
-				<Footer />
-			</main>
+			<Header />
+			<section>
+				{children}
+			</section>
+			<Footer />
 		</>
 	);
 };

@@ -3,13 +3,14 @@ import React, { FunctionComponent } from 'react';
 import { useSpring, animated } from 'react-spring';
 //? Utils
 import { easeInOut } from 'utils/easingFunctions';
+import { getHomeTitleSize } from 'utils/responsiveSizes';
 
 interface Properties {
 	sceneChanging: boolean;
 }
 
 const Title: FunctionComponent<Properties> = ({ sceneChanging }) => {
-	const fullWidth: number = Math.floor((window.innerWidth / 2) - 200);
+	const fullWidth: number = getHomeTitleSize();
 	const props = useSpring({
 		width: sceneChanging ? 0 : fullWidth,
 		from: { width: 0 },
