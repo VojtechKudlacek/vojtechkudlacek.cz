@@ -6,8 +6,8 @@ import SideLinkWrap from 'components/SideLinkWrap';
 import BackgroundImage from 'components/BackgroundImage';
 import BackgroundWrap from 'components/BackgroundWrap';
 import Content from 'components/Content';
-import PowerOfJavaScript from './components/PowerOfJavaScript';
-import Title from './components/Title';
+import PowerOfJavaScript from 'components/PowerOfJavaScript';
+import Title from 'components/HomeTitle';
 
 interface Properties {
 	sceneChanging: boolean;
