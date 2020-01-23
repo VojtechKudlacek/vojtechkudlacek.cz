@@ -8,7 +8,7 @@ import BackgroundImage from 'components/BackgroundImage';
 import BackgroundWrap from 'components/BackgroundWrap';
 import SideLinkWrap from 'components/SideLinkWrap';
 import Content from 'components/Content';
-import TextSection from './components/TextSection';
+import TextSection from 'components/TextSection';
 
 const Bio: FunctionComponent = () => {
 	const age = calculateAge(1998, 4, 9);

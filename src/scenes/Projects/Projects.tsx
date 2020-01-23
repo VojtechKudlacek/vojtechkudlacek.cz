@@ -2,8 +2,8 @@
 import React, { FunctionComponent } from 'react';
 import { useSpring, animated } from 'react-spring';
 //? Utils
-import useControl from './utils/controlHook';
-import projects from './utils/projectList';
+import useControl from 'hooks/projectControlHook';
+import projects from 'utils/projectList';
 //? Components
 import Navigation from 'components/Navigation';
 import SideLink from 'components/SideLink';
