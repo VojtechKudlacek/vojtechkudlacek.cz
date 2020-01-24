@@ -3,26 +3,27 @@ import React, { FunctionComponent, ReactNode } from 'react';
 import { useSpring, animated } from 'react-spring';
 //? Utils
 import { easeInOut } from 'utils/easingFunctions';
+import { getBioWidth } from 'utils/responsiveSizes';
 
 interface Properties {
 	title: string;
-	delayIn: number;
-	delayOut: number;
+	delay: number;
 	requiredWidth: number;
 	children: ReactNode;
 	sceneChanging: boolean;
 }
 
-const TextSection: FunctionComponent<Properties> = ({ children, title, delayIn, delayOut, requiredWidth, sceneChanging }) => {
+const TextSection: FunctionComponent<Properties> = ({ children, title, delay, requiredWidth, sceneChanging }) => {
+	const width = getBioWidth(requiredWidth);
 	const props = useSpring({
-		width: sceneChanging ? 0 : requiredWidth,
+		width: sceneChanging ? 0 : width,
 		from: { width: 0 },
-		delay: sceneChanging ? delayOut : delayIn,
-		config: { duration: sceneChanging ? 1000 - delayOut : 1000, easing: easeInOut }
+		delay: sceneChanging ? 0 : delay,
+		config: { duration: 1000, easing: easeInOut }
 	});
 	return (
 		<animated.div style={props} className="textSection">
-			<div className="sectionWrap" style={{ width: requiredWidth }}>
+			<div className="sectionWrap" style={{ width }}>
 				<h2>{title}</h2>
 				<div className="sectionContent">
 					{children}

@@ -1,6 +1,6 @@
 class ImagePreloader {
 
-	private readonly imagesToLoad: Array<string> = ['bio.png', 'home.png', 'projects.png', 'jspower.svg', 'vk.svg'];
+	private readonly imagesToLoad: Array<string> = ['bio.png', 'home.png', 'projects.png', 'jspower.svg', 'vk.svg', 'vkmobile.svg'];
 
 	private loaded: number = 0;
 
