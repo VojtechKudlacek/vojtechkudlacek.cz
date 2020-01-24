@@ -509,6 +509,13 @@ footer {
 		width: auto;
     height: auto;
 	}
+	.background {
+		.backgroundImage {
+			&.projects {
+				background-image: url('/images/projectsMobile.png');
+			}
+		}
+	}
 }
 
 @media (max-width: 575px) {
