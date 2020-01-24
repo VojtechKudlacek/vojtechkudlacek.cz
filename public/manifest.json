@@ -1,6 +1,6 @@
 {
   "short_name": "Vojtěch Kudláček",
-  "name": "Vojtěch Kudláček, Web developer",
+  "name": "Vojtěch Kudláček | JavaScript Developer",
   "icons": [
     {
       "src": "favicon.ico",
@@ -13,9 +13,14 @@
       "sizes": "192x192"
     },
     {
-      "src": "logo1024.png",
+      "src": "logo256.png",
       "type": "image/png",
-      "sizes": "1024x1024"
+      "sizes": "256x256"
+		},
+		{
+      "src": "logo512.png",
+      "type": "image/png",
+      "sizes": "512x512"
     }
   ],
   "start_url": ".",
