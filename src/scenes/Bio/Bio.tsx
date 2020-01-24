@@ -2,7 +2,6 @@
 import React, { FunctionComponent } from 'react';
 //? Utils
 import { calculateAge } from 'utils/ageCalculator';
-import { getBioPadding } from 'utils/responsiveSizes';
 //? Components
 import SideLink from 'components/SideLink';
 import BackgroundImage from 'components/BackgroundImage';
@@ -19,7 +18,7 @@ const Bio: FunctionComponent = () => {
 				<BackgroundImage image="bio" />
 			</BackgroundWrap>
 			<Content>
-				<div style={{ paddingLeft: getBioPadding() }}>
+				<div className="bioIndent">
 					<TextSection title="A Little About Me" delay={0} requiredWidth={412}>
 						<p>Hey, I'm Vojtěch, {age} years old guy from Děčín, Czech Republic.</p>
 						<p>In three words?</p>

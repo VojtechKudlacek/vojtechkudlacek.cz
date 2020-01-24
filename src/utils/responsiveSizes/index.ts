@@ -1,34 +1,27 @@
+export const SIZES = {
+	SMALL: 575,
+	MEDIUM: 767,
+	LARGE: 991,
+	EXTRA_LARGE: 1199
+};
+
 export const getHomeTitleSize = (): number => {
 	const windowWidth = window.innerWidth;
-	if (windowWidth <= 575) {
+	if (windowWidth <= SIZES.SMALL) {
 		return windowWidth - 40;
-	} else if (windowWidth <= 767) {
+	} else if (windowWidth <= SIZES.MEDIUM) {
 		return windowWidth - 60;
-	} else if (windowWidth <= 991) {
+	} else if (windowWidth <= SIZES.LARGE) {
 		return windowWidth - 200;
 	}
 	return Math.floor(windowWidth / 2);
 };
 
-export const getBioPadding = (): number => {
-	if (window.innerWidth >= 1200) {
-		return Math.floor(window.innerWidth / 10);
-	}
-	return 0;
-};
-
 export const getBioWidth = (requiredWidth: number): number => {
-	if (window.innerWidth <= 767) {
+	if (window.innerWidth <= SIZES.MEDIUM) {
 		return window.innerWidth - 60;
-	} else if (window.innerWidth <= 991) {
+	} else if (window.innerWidth <= SIZES.LARGE) {
 		return window.innerWidth - 100;
 	}
 	return requiredWidth;
-};
-
-export const getTitleImage = (): string => {
-	if (window.innerWidth <= 575) {
-		return 'vkmobile.svg';
-	}
-	return 'vk.svg';
 };

@@ -1,15 +1,14 @@
 //? Core
-import React, { FunctionComponent, ReactNode } from 'react';
+import React, { FunctionComponent } from 'react';
 import { useSpring, animated } from 'react-spring';
 //? Utils
 import { easeInOut } from 'utils/easingFunctions';
 import { getBioWidth } from 'utils/responsiveSizes';
 
-interface Properties {
+interface Properties extends ChildrenProperties {
 	title: string;
 	delay: number;
 	requiredWidth: number;
-	children: ReactNode;
 	sceneChanging: boolean;
 }
 

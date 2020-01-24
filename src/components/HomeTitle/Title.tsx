@@ -3,7 +3,7 @@ import React, { FunctionComponent } from 'react';
 import { useSpring, animated } from 'react-spring';
 //? Utils
 import { easeInOut } from 'utils/easingFunctions';
-import { getHomeTitleSize, getTitleImage } from 'utils/responsiveSizes';
+import { getHomeTitleSize, SIZES } from 'utils/responsiveSizes';
 
 interface Properties {
 	sceneChanging: boolean;
@@ -15,14 +15,11 @@ const Title: FunctionComponent<Properties> = ({ sceneChanging }) => {
 		width: sceneChanging ? 0 : width,
 		from: { width: 0 },
 		delay: 200,
-		config: {
-			duration: sceneChanging ? 800 : 1800,
-			easing: easeInOut
-		}
+		config: { duration: sceneChanging ? 800 : 1800, easing: easeInOut }
 	});
 	return (
 		<animated.div style={props} className="homeTitle">
-			<img src={`/images/${getTitleImage()}`} alt="Vojtěch Kudláček" style={{ width: width }} />
+			<img src={`/images/${window.innerWidth <= SIZES.SMALL ? 'vkmobile.svg' : 'vk.svg'}`} alt="Vojtěch Kudláček" style={{ width: width }} />
 		</animated.div>
 	);
 };

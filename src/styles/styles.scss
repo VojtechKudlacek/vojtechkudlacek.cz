@@ -55,6 +55,11 @@
 	font-family: 'Poppins', sans-serif;
 }
 
+*::selection {
+	background-color: #000;
+	color: white;
+}
+
 body {
 	margin: 0;
 	-webkit-font-smoothing: antialiased;
@@ -315,6 +320,10 @@ footer {
 	}
 }
 
+.bioIndent {
+	padding-left: 10%;
+}
+
 .projectSlideshow {
 	text-align: center;
 	display: flex;
@@ -407,6 +416,9 @@ footer {
 	}
 	.homeTitle {
 		margin-left: 0;
+	}
+	.bioIndent {
+		padding: 0;
 	}
 }
 
