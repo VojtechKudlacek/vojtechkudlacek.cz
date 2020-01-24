@@ -28,21 +28,22 @@
 	src: url('/fonts/Poppins/Poppins-SemiBold.ttf');
 	font-weight: 600;
 }
-@font-face {
-	font-family: 'Poppins';
-	src: url('/fonts/Poppins/Poppins-Bold.ttf');
-	font-weight: 700;
-}
-@font-face {
-	font-family: 'Poppins';
-	src: url('/fonts/Poppins/Poppins-ExtraBold.ttf');
-	font-weight: 800;
-}
-@font-face {
-	font-family: 'Poppins';
-	src: url('/fonts/Poppins/Poppins-Black.ttf');
-	font-weight: 900;
-}
+// I don't use these anywhere. :)
+// @font-face {
+// 	font-family: 'Poppins';
+// 	src: url('/fonts/Poppins/Poppins-Bold.ttf');
+// 	font-weight: 700;
+// }
+// @font-face {
+// 	font-family: 'Poppins';
+// 	src: url('/fonts/Poppins/Poppins-ExtraBold.ttf');
+// 	font-weight: 800;
+// }
+// @font-face {
+// 	font-family: 'Poppins';
+// 	src: url('/fonts/Poppins/Poppins-Black.ttf');
+// 	font-weight: 900;
+// }
 
 @mixin clearfix {
 	content: '';
@@ -53,6 +54,11 @@
 * {
 	box-sizing: border-box;
 	font-family: 'Poppins', sans-serif;
+}
+
+*::selection {
+	background-color: #000;
+	color: white;
 }
 
 body {
@@ -315,6 +321,10 @@ footer {
 	}
 }
 
+.bioIndent {
+	padding-left: 10%;
+}
+
 .projectSlideshow {
 	text-align: center;
 	display: flex;
@@ -408,20 +418,17 @@ footer {
 	.homeTitle {
 		margin-left: 0;
 	}
+	.bioIndent {
+		padding: 0;
+	}
 }
 
 @media (max-width: 991px) {
 	main {
-		height: auto;
-		padding: 50px 50px 195px 50px;
+		padding: 125px 50px 195px 50px;
 	}
 	header {
-		position: relative;
-		margin-bottom: 50px;
-		padding: 0;
-	}
-	section {
-		padding: 100px 0;
+		padding: 50px 50px 0 50px;
 	}
 	footer {
     padding: 0 50px 50px 50px;
@@ -482,9 +489,71 @@ footer {
 }
 
 @media (max-width: 767px) {
+	main {
+		padding: 85px 30px 155px 30px;
+		height: auto;
+	}
+	header {
+    padding: 30px 30px 0 30px;
+	}
+	section {
+		padding: 50px 0;
+	}
+	footer {
+    padding: 0 30px 30px 30px;
+	}
+	.sideLinks {
+		bottom: 100px;
+    padding: 0 30px;
+	}
+	.project {
+		width: auto;
+    height: auto;
+	}
+	.background {
+		.backgroundImage {
+			&.projects {
+				background-image: url('/images/projectsMobile.png');
+			}
+		}
+	}
 }
 
 @media (max-width: 575px) {
-
+	main {
+    padding: 65px 20px 210px 20px;
+	}
+	header {
+		padding: 20px 20px 0 20px;
+	}
+	footer {
+    padding: 0 20px 20px 20px;
+	}
+	.background {
+		.jspower {
+			height: 50%;
+    	top: 50%;
+		}
+	}
+	.sideLinks {
+		bottom: 165px;
+		padding: 0 20px;
+	}
+	.socials {
+		.socialLink {
+			display: block;
+			margin: 0;
+		}
+	}
+	.contacts {
+		.contact {
+			display: block;
+			margin: 0;
+		}
+	}
+	.projectSlideshow {
+		.control {
+			padding: 20px 10px;
+		}
+	}
 }
-

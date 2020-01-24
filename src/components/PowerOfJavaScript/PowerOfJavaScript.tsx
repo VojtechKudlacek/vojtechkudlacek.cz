@@ -10,10 +10,9 @@ interface Properties {
 
 const PowerOfJavaScript: FunctionComponent<Properties> = ({ sceneChanging }) => {
 	const props = useSpring({
-		opacity: sceneChanging ? 0 : 1,
 		left: sceneChanging ? 30 : 0,
 		from: { left: 0 },
-		config: { duration: 600 }
+		config: { duration: 800 }
 	});
 	const [progress, setProgress] = useState<number>(0);
 	useEffect(() => {
