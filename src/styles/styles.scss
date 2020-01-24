@@ -28,21 +28,22 @@
 	src: url('/fonts/Poppins/Poppins-SemiBold.ttf');
 	font-weight: 600;
 }
-@font-face {
-	font-family: 'Poppins';
-	src: url('/fonts/Poppins/Poppins-Bold.ttf');
-	font-weight: 700;
-}
-@font-face {
-	font-family: 'Poppins';
-	src: url('/fonts/Poppins/Poppins-ExtraBold.ttf');
-	font-weight: 800;
-}
-@font-face {
-	font-family: 'Poppins';
-	src: url('/fonts/Poppins/Poppins-Black.ttf');
-	font-weight: 900;
-}
+// I don't use these anywhere. :)
+// @font-face {
+// 	font-family: 'Poppins';
+// 	src: url('/fonts/Poppins/Poppins-Bold.ttf');
+// 	font-weight: 700;
+// }
+// @font-face {
+// 	font-family: 'Poppins';
+// 	src: url('/fonts/Poppins/Poppins-ExtraBold.ttf');
+// 	font-weight: 800;
+// }
+// @font-face {
+// 	font-family: 'Poppins';
+// 	src: url('/fonts/Poppins/Poppins-Black.ttf');
+// 	font-weight: 900;
+// }
 
 @mixin clearfix {
 	content: '';
