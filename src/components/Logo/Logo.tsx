@@ -77,6 +77,8 @@ class Logo extends Component<EmptyProperties, State> {
 				<svg
 					onMouseEnter={this.mouseEnter}
 					onMouseLeave={this.mouseLeave}
+					onTouchStart={this.mouseEnter}
+					onTouchEnd={this.mouseLeave}
 					xmlns="http://www.w3.org/2000/svg"
 					viewBox="0 0 512 512"
 					width="25"
