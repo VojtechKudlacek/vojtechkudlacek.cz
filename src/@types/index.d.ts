@@ -17,7 +17,7 @@ type DispatchFunction = (action: ReducerAction) => void;
 
 interface AppState {
 	sceneChanging: boolean;
-	sceneLoading: boolean;
+	projects: Array<Project>;
 }
 
 interface Project {

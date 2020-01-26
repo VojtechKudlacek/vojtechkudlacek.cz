@@ -13,6 +13,7 @@ const Footer: FunctionComponent = () => {
 				<a className="socialLink" target="__blank" href="https://www.linkedin.com/in/vojt%C4%9Bch-kudl%C3%A1%C4%8Dek-39a826145/">
 					<DirectionalFader delay={700}>LinkedIn</DirectionalFader>
 				</a>
+				{/* eslint-disable-next-line */}
 				<a className="socialLink" target="__blank" href="#">
 					<DirectionalFader delay={1000}>YouTube</DirectionalFader>
 				</a>

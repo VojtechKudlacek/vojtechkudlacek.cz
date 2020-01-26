@@ -2,7 +2,6 @@
 import React, { FunctionComponent } from 'react';
 //? Utils
 import useControl from 'hooks/projectControlHook';
-import projects from 'utils/projectList';
 //? Components
 import Navigation from 'components/Navigation';
 import SideLink from 'components/SideLink';
@@ -12,7 +11,11 @@ import BackgroundWrap from 'components/BackgroundWrap';
 import ProjectSlideshow from 'components/ProjectSlideshow';
 import BackgroundImage from 'components/BackgroundImage';
 
-const References: FunctionComponent = () => {
+interface Properties {
+	projects: Array<Project>;
+}
+
+const References: FunctionComponent<Properties> = ({ projects }) => {
 	const changeduration = 400;
 	const [state, setIndex] = useControl(changeduration);
 	return (
