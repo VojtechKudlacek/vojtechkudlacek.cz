@@ -14,7 +14,7 @@ const Title: FunctionComponent<Properties> = ({ sceneChanging }) => {
 	const props = useSpring({
 		width: sceneChanging ? 0 : width,
 		from: { width: 0 },
-		delay: 200,
+		delay: sceneChanging ? 0 : 200,
 		config: { duration: sceneChanging ? 800 : 1800, easing: easeInOut }
 	});
 	return (
