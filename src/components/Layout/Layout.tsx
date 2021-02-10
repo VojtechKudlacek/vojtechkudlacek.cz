@@ -1,18 +1,15 @@
-//? Core
-import React, { FunctionComponent } from 'react';
-//? Components
-import Header from 'components/Header';
-import Section from 'components/Section';
-import Footer from 'components/Footer';
+import { FunctionComponent } from 'react';
+import Background from 'components/Background';
 
 const Layout: FunctionComponent<ChildrenProperties> = ({ children }) => {
 	return (
 		<>
-			<Header />
-			<Section>
+			<Background />
+			<nav />
+			<div className="content">
 				{children}
-			</Section>
-			<Footer />
+			</div>
+			<footer />
 		</>
 	);
 };

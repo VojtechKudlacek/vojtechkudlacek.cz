@@ -1,5 +1,4 @@
-//? Core
-import React, { FunctionComponent } from 'react';
+import { FunctionComponent } from 'react';
 
 const SourceCode: FunctionComponent = () => {
 	return (

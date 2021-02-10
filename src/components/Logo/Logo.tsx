@@ -1,8 +1,4 @@
-//? Core
-import React, { Component, ReactNode } from 'react';
-//? Components
-import Link from 'components/Link';
-//? Animation functions
+import { Component, ReactNode } from 'react';
 import { animateLine, animateLogo, animateSmileyFace, animateSmileyEye } from './animations';
 
 interface State {
@@ -73,20 +69,18 @@ class Logo extends Component<EmptyProperties, State> {
 
 	render(): ReactNode {
 		return (
-			<Link to="/">
-				<svg
-					onMouseEnter={this.mouseEnter}
-					onMouseLeave={this.mouseLeave}
-					onTouchStart={this.mouseEnter}
-					onTouchEnd={this.mouseLeave}
-					xmlns="http://www.w3.org/2000/svg"
-					viewBox="0 0 512 512"
-					width="25"
-					height="25"
-				>
-					{this.getSvgContent()}
-				</svg>
-			</Link>
+			<svg
+				onMouseEnter={this.mouseEnter}
+				onMouseLeave={this.mouseLeave}
+				onTouchStart={this.mouseEnter}
+				onTouchEnd={this.mouseLeave}
+				xmlns="http://www.w3.org/2000/svg"
+				viewBox="0 0 512 512"
+				width="25"
+				height="25"
+			>
+				{this.getSvgContent()}
+			</svg>
 		);
 	}
 

@@ -1,2 +1,1 @@
-import SourceCode from './SourceCode';
-export default SourceCode;
+export { default } from './SourceCode';

@@ -3,33 +3,25 @@
   "version": "0.9.0",
   "private": true,
   "dependencies": {
-    "@types/node": "12.7.8",
-    "@types/react": "16.9.3",
-    "@types/react-dom": "16.9.1",
-    "@types/react-redux": "^7.1.5",
-    "@types/react-router": "^5.1.3",
-    "@types/react-router-dom": "^5.1.2",
+    "@types/node": "^14.14.25",
+    "@types/react": "^17.0.1",
+    "@types/react-dom": "^17.0.0",
+    "@types/react-redux": "^7.1.16",
+    "@typescript-eslint/eslint-plugin": "^4.11.1",
+    "@typescript-eslint/parser": "^4.11.1",
     "node-sass": "^4.13.0",
-    "popmotion": "^8.7.1",
-    "react": "^16.12.0",
-    "react-dom": "^16.12.0",
-    "react-ga": "^2.7.0",
-    "react-redux": "^7.1.3",
-    "react-router": "^5.1.2",
-    "react-router-dom": "^5.1.2",
-    "react-scripts": "3.1.2",
-    "react-spring": "^9.0.0-beta.34",
-    "redux": "^4.0.5",
-    "redux-devtools-extension": "^2.13.8",
-    "tslint": "^5.20.1",
-    "tslint-react": "^4.1.0",
-    "typescript": "3.6.3"
+    "popmotion": "^9.1.0",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "react-ga": "^3.3.0",
+    "react-redux": "^7.2.2",
+    "react-scripts": "^4.0.2",
+    "typescript": "^4.1.3"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "dev": "react-scripts start",
     "build": "react-scripts build && cp _redirects build/_redirects",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "test": "react-scripts test"
   },
   "eslintConfig": {
     "extends": "react-app"

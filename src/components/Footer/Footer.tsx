@@ -1,26 +1,22 @@
-//? Core
-import React, { FunctionComponent } from 'react';
-//? Components
-import DirectionalFader from './components/DirectionalFader';
+import { FunctionComponent } from 'react';
 
 const Footer: FunctionComponent = () => {
 	return (
 		<footer>
 			<div className="socials">
 				<a className="socialLink" target="__blank" href="https://www.instagram.com/kudlacekvojtech/">
-					<DirectionalFader delay={400}>Instagram</DirectionalFader>
+					Instagram
 				</a>
 				<a className="socialLink" target="__blank" href="https://www.linkedin.com/in/vojt%C4%9Bch-kudl%C3%A1%C4%8Dek-39a826145/">
-					<DirectionalFader delay={700}>LinkedIn</DirectionalFader>
+					LinkedIn
 				</a>
-				{/* eslint-disable-next-line */}
 				<a className="socialLink" target="__blank" href="#">
-					<DirectionalFader delay={1000}>YouTube</DirectionalFader>
+					YouTube
 				</a>
 			</div>
 			<div className="contacts">
-				<DirectionalFader className="contact" delay={1000}>vjtkudlacek@gmail.com</DirectionalFader>
-				<DirectionalFader className="contact" delay={400}>+420 735 854 688</DirectionalFader>
+				vjtkudlacek@gmail.com
+				+420 735 854 688
 			</div>
 		</footer>
 	);

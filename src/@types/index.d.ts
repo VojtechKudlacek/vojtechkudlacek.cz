@@ -4,24 +4,21 @@ interface ChildrenProperties {
   children: ReactNode;
 }
 
-interface LooseObject<T = any> {
+interface Dictionary<T> {
 	[key: string]: T;
 }
 
-interface ReducerAction {
-	type: string;
-	payload?: any;
+interface Point {
+	id: number;
+	x: number;
+	y: number;
+	z: number;
+	size: number;
 }
 
-type DispatchFunction = (action: ReducerAction) => void;
-
-interface AppState {
-	sceneChanging: boolean;
-	projects: Array<Project>;
+interface Vector {
+	vx: number;
+	vy: number;
 }
 
-interface Project {
-	name: string;
-	description: string;
-	link: string;
-}
+type DynamicPoint = Point & Vector & { speed: number; };

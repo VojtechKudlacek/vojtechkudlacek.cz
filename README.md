@@ -12,6 +12,8 @@ I don't do PHP, so don't even come to me with this.
 
 Site [vojtechkudlacek.cz](https://vojtechkudlacek.cz) was created as an example what I'm capable of.
 
+Even though I'm capable of more things than just simple react app...
+
 ### Code
 
 Feel free to browse through the code and look how I'm doing things.

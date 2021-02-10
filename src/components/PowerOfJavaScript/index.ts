@@ -1,2 +1,1 @@
-import PowerOfJavaScript from './PowerOfJavaScript';
-export default PowerOfJavaScript;
+export { default } from './PowerOfJavaScript';

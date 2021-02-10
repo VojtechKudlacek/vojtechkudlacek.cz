@@ -1,0 +1,49 @@
+@mixin clearfix {
+	content: '';
+  display: table;
+  clear: both;
+}
+
+* {
+	box-sizing: border-box;
+	font-family: 'Poppins', sans-serif;
+}
+
+*::selection {
+	background-color: #000;
+	color: white;
+}
+
+body {
+	margin: 0;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	background: #000;
+	color: #fff;
+	min-height: 200vh;
+}
+
+header, section, footer, aside, nav, main, article, figure {
+  display: block;
+}
+
+code {
+	font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+}
+
+.background {
+	display: block;
+	position: fixed;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+}
+
+.js-power {
+	position: absolute;
+	height: 120%;
+	svg {
+		height: 100%;
+	}
+}
