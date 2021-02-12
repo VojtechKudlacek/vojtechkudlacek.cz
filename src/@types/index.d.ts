@@ -8,17 +8,12 @@ interface Dictionary<T> {
 	[key: string]: T;
 }
 
-interface Point {
+interface MovingObject {
 	id: number;
 	x: number;
 	y: number;
-	z: number;
-	size: number;
-}
-
-interface Vector {
 	vx: number;
 	vy: number;
+	size: number;
+	speed: number;
 }
-
-type DynamicPoint = Point & Vector & { speed: number; };
