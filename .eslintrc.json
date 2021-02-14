@@ -261,7 +261,7 @@
 		"max-nested-callbacks": "off",
 		"max-params": [
 			"error",
-			3
+			6
 		],
 		"max-statements": "off",
 		"max-statements-per-line": [

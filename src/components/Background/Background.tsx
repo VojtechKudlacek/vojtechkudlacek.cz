@@ -1,5 +1,6 @@
 import { Component, createRef, RefObject } from 'react';
 import Shapes from 'render/Shapes';
+import ContextManager from 'render/ContextManager';
 
 class Background extends Component {
 
@@ -8,11 +9,11 @@ class Background extends Component {
 	private ctx!: CanvasRenderingContext2D;
 	private animating: boolean;
 
-	private shapes: Shapes;
+	private shapes!: Shapes;
+	private ctxManager!: ContextManager;
 
 	constructor(props: EmptyProperties) {
 		super(props);
-		this.shapes = new Shapes(32, '#fff', 1);
 		this.animating = false;
 		this.animate = this.animate.bind(this);
 	}
@@ -20,6 +21,8 @@ class Background extends Component {
 	public componentDidMount(): void {
 		this.canvas = this.canvasRef.current!;
 		this.ctx = this.canvas.getContext('2d')!;
+		this.shapes = new Shapes(32, '#fff', 1);
+		this.ctxManager = new ContextManager(this.ctx);
 		this.shapes.predraw();
 		this.animating = true;
 		this.animate();
@@ -29,11 +32,14 @@ class Background extends Component {
 		this.animating = false;
 	}
 
+	private rotation = 0;
 	private canvasRender(): void {
-		this.ctx.drawImage(this.shapes.Circle, 64, 64);
-		this.ctx.drawImage(this.shapes.Cross, 125, 64);
-		this.ctx.drawImage(this.shapes.Square, 192, 64);
-		this.ctx.drawImage(this.shapes.Triangle, 256, 64);
+		this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+		this.rotation += 0.1;
+		this.ctxManager.drawRotatedSquareImage(this.shapes.Circle, 32, 64, 64, this.rotation);
+		this.ctxManager.drawRotatedSquareImage(this.shapes.Cross, 32, 125, 64, this.rotation);
+		this.ctxManager.drawRotatedSquareImage(this.shapes.Square, 32, 192, 64, this.rotation);
+		this.ctxManager.drawRotatedSquareImage(this.shapes.Triangle, 32, 256, 64, this.rotation);
 	}
 
 	private animate(): void {
