@@ -1,9 +1,13 @@
-export const randomIntFromInterval = (min: number, max: number) => {
+export const randomIntFromInterval = (min: number, max: number): number => {
 	return Math.floor(Math.random() * (max - min + 1) + min);
 };
 
-export const randomFloatFromInterval = (min: number, max: number) => {
-	return randomIntFromInterval(min * 10, max * 10) / 10;
+export const randomFloatFromInterval = (min: number, max: number): number => {
+	return Math.random() * (max - min + 1) + min;
+};
+
+export const toOneDecimal = (num: number): number => {
+	return Math.round(num * 10) / 10;
 };
 
 export const getDocumentHeight = (): number => {
