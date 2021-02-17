@@ -15,7 +15,8 @@ interface Velocity {
 }
 
 interface Shape {
-	mesh: import('three').Mesh;
+	content: import('pixi.js').Graphics;
+	size: number;
 	vx: number;
 	vy: number;
 	vr: number;

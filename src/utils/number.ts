@@ -3,7 +3,7 @@ export const randomIntFromInterval = (min: number, max: number): number => {
 };
 
 export const randomFloatFromInterval = (min: number, max: number): number => {
-	return Math.random() * (max - min + 1) + min;
+	return (Math.random() * ((max * 100) - (min * 100) + 1) + (min * 100)) / 100;
 };
 
 export const toNDecimals = (num: number, decimals = 1): number => {
