@@ -317,7 +317,7 @@
 		],
 		"padded-blocks": "off",
 		"padding-line-between-statements": "off",
-		"prefer-exponentiation-operator": "error",
+		"prefer-exponentiation-operator": "off",
 		"prefer-object-spread": "error",
 		"quote-props": [
 			"error",

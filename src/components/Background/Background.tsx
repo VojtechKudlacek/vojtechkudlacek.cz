@@ -3,22 +3,16 @@ import AnimatedBackground from 'background/Background';
 
 class Background extends Component {
 
-	private canvasRef: RefObject<HTMLCanvasElement> = createRef();
-
-	private bg!: AnimatedBackground;
+	private rendererWrap: RefObject<HTMLDivElement> = createRef();
 
 	public componentDidMount(): void {
-		const canvas = this.canvasRef.current!;
-		this.bg = new AnimatedBackground(canvas, 15);
-		this.bg.init();
-	}
-
-	public componentWillUnmount(): void {
-		this.bg.terminate();
+		const wrap = this.rendererWrap.current!;
+		const bg = new AnimatedBackground(wrap);
+		bg.init();
 	}
 
 	public render(): JSX.Element {
-		return <canvas className="background" ref={this.canvasRef} width={window.innerWidth} height={window.innerHeight} />;
+		return <div className="background" ref={this.rendererWrap} />;
 	}
 
 }

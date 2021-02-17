@@ -6,8 +6,9 @@ export const randomFloatFromInterval = (min: number, max: number): number => {
 	return Math.random() * (max - min + 1) + min;
 };
 
-export const toOneDecimal = (num: number): number => {
-	return Math.round(num * 10) / 10;
+export const toNDecimals = (num: number, decimals = 1): number => {
+	const helper = 10 ** decimals;
+	return Math.round(num * helper) / helper;
 };
 
 export const getDocumentHeight = (): number => {

@@ -10,6 +10,7 @@
     "@typescript-eslint/eslint-plugin": "^4.11.1",
     "@typescript-eslint/parser": "^4.11.1",
     "node-sass": "^4.13.0",
+    "pixi.js": "^5.3.7",
     "popmotion": "^9.1.0",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
