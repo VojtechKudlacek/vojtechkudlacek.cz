@@ -4,7 +4,10 @@ import { toNDecimals, randomFloatFromInterval, randomIntFromInterval } from 'uti
 
 class ShapeFactory {
 
+	private stack: Array<(size: number, thickness: number) => PIXI.Graphics>;
+
 	constructor() {
+		this.stack = [];
 		this.createTriangle = this.createTriangle.bind(this);
 		this.createSquare = this.createSquare.bind(this);
 		this.createCircle = this.createCircle.bind(this);
@@ -14,9 +17,8 @@ class ShapeFactory {
 	private createTriangle(size: number, thickness: number): PIXI.Graphics {
 		const g = new PIXI.Graphics();
 		const halfSize = size / 2;
-		const tHeight = Math.sqrt(Math.pow(size, 2) - Math.pow(halfSize, 2));
-		const padding = size - tHeight;
-		g.pivot.set(halfSize, tHeight - padding);
+		const padding = size - Math.sqrt(Math.pow(size, 2) - Math.pow(halfSize, 2));
+		g.pivot.set(halfSize, padding + (size * Math.sqrt(3) / 3));
 		g.lineStyle(thickness, 0xFFFFFF, 1);
 		g.drawPolygon([0, size, halfSize, padding, size, size]);
 		return g;
@@ -49,14 +51,18 @@ class ShapeFactory {
 	}
 
 	private getRandomShape(size: number, thickness: number): PIXI.Graphics {
-		const meshGenerators = [this.createTriangle, this.createSquare, this.createCircle, this.createCross];
-		return randomItemFromArray(meshGenerators)(size, thickness);
+		// Not really random yeah
+		if (!this.stack.length) {
+			this.stack = [this.createTriangle, this.createSquare, this.createCircle, this.createCross];
+		}
+		const fnIndex = randomIntFromInterval(0, this.stack.length - 1);
+		return this.stack.splice(fnIndex, 1)[0](size, thickness);
 	}
 
 	private getVelocity(): Velocity {
 		const vx = toNDecimals(randomItemFromArray([randomFloatFromInterval(-3, -1), randomFloatFromInterval(1, 3)]), 2);
 		const vy = toNDecimals(randomItemFromArray([randomFloatFromInterval(-3, -1), randomFloatFromInterval(1, 3)]), 2);
-		const vr = toNDecimals(randomFloatFromInterval(-0.1, 0.1), 2);
+		const vr = toNDecimals(randomItemFromArray([randomFloatFromInterval(-0.1, -0.02), randomFloatFromInterval(0.02, 0.1)]), 2);
 		return { vx, vy, vr };
 	}
 
@@ -64,11 +70,11 @@ class ShapeFactory {
 		if (Math.abs(vx) > Math.abs(vy)) {
 			return {
 				x: vx > 0 ? -(size) : (window.innerWidth + size),
-				y: randomIntFromInterval(0, window.innerHeight),
+				y: vy > 0 ? randomIntFromInterval(0, window.innerHeight / 2) : randomIntFromInterval(window.innerHeight / 2, window.innerHeight),
 			};
 		}
 		return {
-			x: randomIntFromInterval(0, window.innerWidth),
+			x: vx > 0 ? randomIntFromInterval(0, window.innerWidth / 2) : randomIntFromInterval(window.innerWidth / 2, window.innerWidth),
 			y: vy > 0 ? -(size) : (window.innerHeight + size),
 		};
 	}
