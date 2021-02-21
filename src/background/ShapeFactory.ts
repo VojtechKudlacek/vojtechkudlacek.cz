@@ -19,7 +19,7 @@ class ShapeFactory {
 		const halfSize = size / 2;
 		const padding = size - Math.sqrt(Math.pow(size, 2) - Math.pow(halfSize, 2));
 		g.pivot.set(halfSize, padding + (size * Math.sqrt(3) / 3));
-		g.lineStyle(thickness, 0xFFFFFF, 1);
+		g.lineStyle(thickness, 0xFFFFFF, 0.3);
 		g.drawPolygon([0, size, halfSize, padding, size, size]);
 		return g;
 	}
@@ -27,7 +27,7 @@ class ShapeFactory {
 	private createSquare(size: number, thickness: number): PIXI.Graphics {
 		const g = new PIXI.Graphics();
 		g.pivot.set(size / 2);
-		g.lineStyle(thickness, 0xFFFFFF, 1);
+		g.lineStyle(thickness, 0xFFFFFF, 0.3);
 		g.drawRect(0, 0, size, size);
 		return g;
 	}
@@ -36,7 +36,7 @@ class ShapeFactory {
 		const g = new PIXI.Graphics();
 		const halfSize = size / 2;
 		g.pivot.set(halfSize);
-		g.lineStyle(thickness, 0xFFFFFF, 1);
+		g.lineStyle(thickness, 0xFFFFFF, 0.3);
 		g.drawCircle(halfSize, halfSize, halfSize);
 		return g;
 	}
@@ -45,7 +45,7 @@ class ShapeFactory {
 		const g = new PIXI.Graphics();
 		const halfSize = size / 2;
 		g.pivot.set(halfSize);
-		g.lineStyle(thickness, 0xFFFFFF, 1);
+		g.lineStyle(thickness, 0xFFFFFF, 0.3);
 		g.drawPolygon([0, 0, size, size, halfSize, halfSize, 0, size, size, 0, halfSize, halfSize]);
 		return g;
 	}
