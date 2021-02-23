@@ -88,10 +88,6 @@ class ShapeFactory {
 		return { content, size, vx, vy, vr };
 	}
 
-	public isOutOfscreen(e: Shape, width: number, height: number): boolean {
-		return (e.content.position.x < -e.size) || (e.content.position.x > (width + e.size)) || (e.content.position.y < -e.size) || (e.content.position.y > (height + e.size));
-	}
-
 }
 
 export default ShapeFactory;

@@ -1,5 +1,6 @@
 import * as PIXI from 'pixi.js';
-import ShapeFactory from './ShapeFactory';
+// import 'pixi-projection';
+import ShapeManager from './ShapeManager';
 import Stats from './Stats';
 
 class Background {
@@ -12,12 +13,12 @@ class Background {
 	private mouse: PIXI.Graphics;
 	private mouseContainer: PIXI.Container;
 
-	private shapeFactory: ShapeFactory;
-	private shapes: Array<Shape>;
+	private shapeManager: ShapeManager;
 	private shapeContainer: PIXI.Container;
 
 	private stats: Stats;
 
+	private testContainer: PIXI.Container;
 	private test: {
 		a: PIXI.Graphics;
 		b: PIXI.Graphics;
@@ -42,21 +43,11 @@ class Background {
 		this.noise = new PIXI.filters.NoiseFilter(1, 0.01);
 		this.mouseContainer = new PIXI.Container();
 		this.shapeContainer = new PIXI.Container();
-		this.shapeFactory = new ShapeFactory();
-		this.shapes = [];
+		this.shapeManager = new ShapeManager(this.shapeContainer, 20);
 		this.animation = this.animation.bind(this);
 		this.mouseMove = this.mouseMove.bind(this);
+		this.testContainer = new PIXI.Container();
 		this.onWindowResize = this.onWindowResize.bind(this);
-	}
-
-	private refill(): void {
-		setInterval(() => {
-			if (this.shapes.length < 10) {
-				const shape = this.shapeFactory.createShape(12, 1);
-				this.shapes.push(shape);
-				this.shapeContainer.addChild(shape.content);
-			}
-		}, 1000);
 	}
 
 	private animation(): void {
@@ -65,18 +56,7 @@ class Background {
 		if (this.noise.seed >= 0.99) {
 			this.noise.seed = 0.01;
 		}
-		for (let i = 0; i < this.shapes.length; i++) {
-			if (this.shapeFactory.isOutOfscreen(this.shapes[i], window.innerWidth, window.innerHeight)) {
-				this.shapeContainer.removeChild(this.shapes[i].content);
-				this.shapes.splice(i, 1);
-				i--;
-			}
-			if (this.shapes[i]) {
-				this.shapes[i].content.position.x += this.shapes[i].vx;
-				this.shapes[i].content.position.y += this.shapes[i].vy;
-				this.shapes[i].content.rotation += this.shapes[i].vr;
-			}
-		}
+		this.shapeManager.process();
 		if (this.mouseInCenter) {
 			if (this.test.a.rotation < 0) {
 				this.test.a.rotation += 0.05;
@@ -110,7 +90,6 @@ class Background {
 		this.wrap.appendChild(this.app.view);
 		this.wrap.appendChild(this.stats.dom);
 		this.app.ticker.add(this.animation);
-		this.refill();
 		this.app.stage.addChild(this.mouseContainer);
 		this.app.stage.addChild(this.shapeContainer);
 		this.mouse.drawRect(-window.innerWidth, -window.innerHeight, window.innerWidth * 2, window.innerHeight * 2);
@@ -137,9 +116,8 @@ class Background {
 		this.test.c.position.set(Math.floor(window.innerWidth / 2), Math.floor(window.innerHeight / 2));
 		this.test.c.drawRect(-100, -100, 200, 200);
 		this.test.c.rotation = Math.PI / 6;
-		this.app.stage.addChild(this.test.a);
-		this.app.stage.addChild(this.test.b);
-		this.app.stage.addChild(this.test.c);
+		this.testContainer.addChild(this.test.a, this.test.b, this.test.c);
+		this.app.stage.addChild(this.testContainer);
 	}
 
 	private mouseInCenter: boolean = false;
