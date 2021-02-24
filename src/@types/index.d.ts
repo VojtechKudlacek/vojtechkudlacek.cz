@@ -16,10 +16,14 @@ interface Velocity {
 
 interface Shape {
 	content: import('pixi.js').Graphics;
+	slowProgression: number;
 	size: number;
 	vx: number;
+	originalVx: number;
 	vy: number;
+	originalVy: number;
 	vr: number;
+	originalVr: number;
 }
 
 interface Position {

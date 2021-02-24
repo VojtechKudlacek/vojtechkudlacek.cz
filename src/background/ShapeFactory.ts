@@ -1,12 +1,31 @@
 import * as PIXI from 'pixi.js';
-import { randomItemFromArray } from 'utils/array';
-import { toNDecimals, randomFloatFromInterval, randomIntFromInterval } from 'utils/number';
+import { randomIntFromInterval, randomNegation } from 'utils/number';
+
+interface Properties {
+	size: number;
+	thickness: number;
+	alpha: number;
+	minSpeed: number;
+	maxSpeed: number;
+}
 
 class ShapeFactory {
 
-	private stack: Array<(size: number, thickness: number) => PIXI.Graphics>;
+	private stack: Array<() => PIXI.Graphics>;
+	private size: number;
+	private halfSize: number;
+	private thickness: number;
+	private alpha: number;
+	private minSpeed: number;
+	private maxSpeed: number;
 
-	constructor() {
+	constructor({ alpha, maxSpeed, minSpeed, size, thickness }: Properties) {
+		this.size = size;
+		this.halfSize = size / 2;
+		this.thickness = thickness;
+		this.alpha = alpha;
+		this.minSpeed = minSpeed;
+		this.maxSpeed = maxSpeed;
 		this.stack = [];
 		this.createTriangle = this.createTriangle.bind(this);
 		this.createSquare = this.createSquare.bind(this);
@@ -14,78 +33,76 @@ class ShapeFactory {
 		this.createCross = this.createCross.bind(this);
 	}
 
-	private createTriangle(size: number, thickness: number): PIXI.Graphics {
+	private setLineStyle(g: PIXI.Graphics): void {
+		const color = Math.random() < 0.1 ? 0xFFFF00 : 0xFFFFFF;
+		g.lineStyle(this.thickness, color, this.alpha);
+	}
+
+	private createTriangle(): PIXI.Graphics {
 		const g = new PIXI.Graphics();
-		const halfSize = size / 2;
-		const padding = size - Math.sqrt(Math.pow(size, 2) - Math.pow(halfSize, 2));
-		g.pivot.set(halfSize, padding + (size * Math.sqrt(3) / 3));
-		g.lineStyle(thickness, 0xFFFFFF, 0.3);
-		g.drawPolygon([0, size, halfSize, padding, size, size]);
+		const padding = this.size - Math.sqrt(Math.pow(this.size, 2) - Math.pow(this.halfSize, 2));
+		g.pivot.set(this.halfSize, padding + (this.size * Math.sqrt(3) / 3));
+		this.setLineStyle(g);
+		g.drawPolygon([0, this.size, this.halfSize, padding, this.size, this.size]);
 		return g;
 	}
 
-	private createSquare(size: number, thickness: number): PIXI.Graphics {
+	private createSquare(): PIXI.Graphics {
 		const g = new PIXI.Graphics();
-		g.pivot.set(size / 2);
-		g.lineStyle(thickness, 0xFFFFFF, 0.3);
-		g.drawRect(0, 0, size, size);
+		g.pivot.set(this.size / 2);
+		this.setLineStyle(g);
+		g.drawRect(0, 0, this.size, this.size);
 		return g;
 	}
 
-	private createCircle(size: number, thickness: number): PIXI.Graphics {
+	private createCircle(): PIXI.Graphics {
 		const g = new PIXI.Graphics();
-		const halfSize = size / 2;
-		g.pivot.set(halfSize);
-		g.lineStyle(thickness, 0xFFFFFF, 0.3);
-		g.drawCircle(halfSize, halfSize, halfSize);
+		g.pivot.set(this.halfSize);
+		this.setLineStyle(g);
+		g.drawCircle(this.halfSize, this.halfSize, this.halfSize);
 		return g;
 	}
 
-	private createCross(size: number, thickness: number): PIXI.Graphics {
+	private createCross(): PIXI.Graphics {
 		const g = new PIXI.Graphics();
-		const halfSize = size / 2;
-		g.pivot.set(halfSize);
-		g.lineStyle(thickness, 0xFFFFFF, 0.3);
-		g.drawPolygon([0, 0, size, size, halfSize, halfSize, 0, size, size, 0, halfSize, halfSize]);
+		g.pivot.set(this.halfSize);
+		this.setLineStyle(g);
+		g.drawPolygon([0, 0, this.size, this.size, this.halfSize, this.halfSize, 0, this.size, this.size, 0, this.halfSize, this.halfSize]);
 		return g;
 	}
 
-	private getRandomShape(size: number, thickness: number): PIXI.Graphics {
+	private getRandomShape(): PIXI.Graphics {
 		// Not really random yeah
 		if (!this.stack.length) {
 			this.stack = [this.createTriangle, this.createSquare, this.createCircle, this.createCross];
 		}
 		const fnIndex = randomIntFromInterval(0, this.stack.length - 1);
-		return this.stack.splice(fnIndex, 1)[0](size, thickness);
+		return this.stack.splice(fnIndex, 1)[0]();
 	}
 
-	private getVelocity(): Velocity {
-		const vx = toNDecimals(randomItemFromArray([randomFloatFromInterval(-3, -1), randomFloatFromInterval(1, 3)]), 2);
-		const vy = toNDecimals(randomItemFromArray([randomFloatFromInterval(-3, -1), randomFloatFromInterval(1, 3)]), 2);
-		const vr = toNDecimals(randomItemFromArray([randomFloatFromInterval(-0.1, -0.02), randomFloatFromInterval(0.02, 0.1)]), 2);
-		return { vx, vy, vr };
+	private getRandomRotation(): number {
+		return randomNegation(randomIntFromInterval(2, 6) / 100);
 	}
 
-	private getStartPosition(size: number, vx: number, vy: number): Position {
-		if (Math.abs(vx) > Math.abs(vy)) {
-			return {
-				x: vx > 0 ? -(size) : (window.innerWidth + size),
-				y: vy > 0 ? randomIntFromInterval(0, window.innerHeight / 2) : randomIntFromInterval(window.innerHeight / 2, window.innerHeight),
-			};
-		}
-		return {
-			x: vx > 0 ? randomIntFromInterval(0, window.innerWidth / 2) : randomIntFromInterval(window.innerWidth / 2, window.innerWidth),
-			y: vy > 0 ? -(size) : (window.innerHeight + size),
-		};
-	}
-
-	public createShape(size: number, thickness: number): Shape {
-		const { vx, vy, vr } = this.getVelocity();
-		const { x, y } = this.getStartPosition(size, vx, vy);
-		const content = this.getRandomShape(size, thickness);
+	public createShape(x: number, y: number, vx: number, vy: number): Shape {
+		const content = this.getRandomShape();
 		content.position.x = x;
 		content.position.y = y;
-		return { content, size, vx, vy, vr };
+		const speed = randomIntFromInterval(this.minSpeed * 100, this.maxSpeed * 100) / 100;
+		const calculatedVx = speed * vx;
+		const calculatedVy = speed * vy;
+		const vr = this.getRandomRotation();
+		return {
+			content,
+			size: this.size,
+			slowProgression: 0,
+			vx: calculatedVx,
+			originalVx: calculatedVx,
+			vy: calculatedVy,
+			originalVy: calculatedVy,
+			vr,
+			originalVr: vr,
+		};
 	}
 
 }

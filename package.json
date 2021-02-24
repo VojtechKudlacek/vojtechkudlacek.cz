@@ -12,7 +12,6 @@
     "i": "^0.3.6",
     "node-sass": "^4.13.0",
     "npm": "^7.5.4",
-    "pixi-projection": "^0.3.15",
     "pixi.js": "^5.3.7",
     "popmotion": "^9.1.0",
     "react": "^17.0.1",
@@ -25,8 +24,7 @@
   "scripts": {
     "dev": "react-scripts start",
     "build": "react-scripts build && cp _redirects build/_redirects",
-    "test": "react-scripts test",
-		"eject": "react-scripts eject"
+    "test": "react-scripts test"
   },
   "eslintConfig": {
     "extends": "react-app"

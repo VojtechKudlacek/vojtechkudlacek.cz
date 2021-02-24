@@ -2,8 +2,8 @@ export const randomIntFromInterval = (min: number, max: number): number => {
 	return Math.floor(Math.random() * (max - min + 1) + min);
 };
 
-export const randomFloatFromInterval = (min: number, max: number): number => {
-	return (Math.random() * ((max * 100) - (min * 100) + 1) + (min * 100)) / 100;
+export const randomNegation = (num: number): number => {
+	return Math.random() < 0.5 ? -num : num;
 };
 
 export const toNDecimals = (num: number, decimals = 1): number => {
