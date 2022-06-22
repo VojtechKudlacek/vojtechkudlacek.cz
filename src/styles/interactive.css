@@ -1,0 +1,21 @@
+.clickable {
+	cursor: pointer;
+}
+
+.invisible {
+	opacity: 0;
+}
+
+.absolute {
+	position: absolute;
+}
+
+.centering {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.transition {
+	transition: .5s;
+}
