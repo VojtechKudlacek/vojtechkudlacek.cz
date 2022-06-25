@@ -44,9 +44,10 @@ export function untypeText(element, ms) {
  * @param {HTMLElement} element
  * @param {string} keep Text to keep
  * @param {boolean} lock Lock element to its content position
+ * @param {number?} ms Transition time
  * @returns {Promise<void>}
  */
-export function vanishRest(element, keep) {
+export function vanishRest(element, keep, ms = 500) {
 	/** @param {string} content */
 	const replaceSpaces = (content) => content.replace(/\ /g, '&nbsp;');
 	/** @param {string} content * @param {string} cname */
@@ -64,7 +65,7 @@ export function vanishRest(element, keep) {
 		setTimeout(() => {
 			// Little bit of a DOM hack
 			element.querySelectorAll('span.transition').forEach((span) => span.classList.add('invisible'));
-		}, 10);
+		}, 1);
 		setTimeout(() => {
 			const { left, top } = element.querySelector('.keep').getBoundingClientRect();
 			element.classList.add('absolute');
@@ -72,6 +73,6 @@ export function vanishRest(element, keep) {
 			element.style.top = `${top}px`;
 			element.innerHTML = keep;
 			resolve();
-		}, 510);
+		}, ms + 1);
 	});
 }

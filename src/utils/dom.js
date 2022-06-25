@@ -35,18 +35,17 @@ export function waitForClick(element, addCursor) {
 	return new Promise((resolve) => {
 		const listener = () => {
 			element.removeEventListener('click', listener);
-			if (addCursor) { classes(element).remove('clickable'); }
+			if (addCursor) { element.classList.remove('clickable'); }
 			resolve();
 		};
 		element.addEventListener('click', listener);
-		if (addCursor) { classes(element).add('clickable'); }
+		if (addCursor) { element.classList.add('clickable'); }
 	});
 }
 
 /**
  * Absolutely centers the element on the screen
  * @param {HTMLElement} element
- * @returns {void}
  */
 export function centerOnScreen(element) {
 	const { width, height } = element.getBoundingClientRect();
@@ -57,13 +56,12 @@ export function centerOnScreen(element) {
 /**
  * Absolutely locks the element to its position
  * @param {HTMLElement} element
- * @returns {void}
  */
 export function lockToPlace(element) {
 	const { left, top } = element.getBoundingClientRect();
 	element.style.left = `${left}px`;
 	element.style.top = `${top}px`;
-	classes(element).add('absolute');
+	element.classList.add('absolute');
 }
 
 /**
