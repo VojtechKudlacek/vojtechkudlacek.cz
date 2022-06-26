@@ -30,7 +30,7 @@ body {
 	background-size: 2rem 2rem;
 	background-repeat: no-repeat;
 	width: 2rem;
-	height: 3rem;
+	height: 2.5rem;
 	animation: hover 1.5s ease-in-out infinite, fadeIn .5s;
 }
 

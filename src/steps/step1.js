@@ -18,11 +18,11 @@ export default function* step1() {
 	yield typeText(interactive, 'I\'m Vojtech......', 70);
 	yield sleep(500);
 	yield typeText(interactive, 'I\'m Vojtech...... and', 70);
-	yield sleep(500);
+	yield sleep(800);
 	yield vanishRest(interactive, 'tech');
 	yield sleep(500);
-	yield typeText(interactive, 'tech is awesome!', 70);
-	yield sleep(500);
+	yield typeText(interactive, 'technology is awesome!', 70);
+	yield sleep(800);
 	cx.remove('transition');
 	yield vanishRest(interactive, 'awesome');
 	yield sleep(500);
